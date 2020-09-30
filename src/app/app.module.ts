@@ -14,6 +14,7 @@ import {AuthService} from './service/auth.service';
 import {SocialAuthService} from 'angularx-social-login';
 import {HttpClient} from '@angular/common/http';
 import {FormBuilder} from '@angular/forms';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {FormBuilder} from '@angular/forms';
     AuthService,
     SocialAuthService,
     HttpClient,
-    FormBuilder
+    FormBuilder,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
