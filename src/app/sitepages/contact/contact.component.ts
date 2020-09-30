@@ -49,10 +49,11 @@ export class ContactComponent implements OnInit {
           this.contactForm.controls[key].setErrors(null);
         });
 
-        this.snackBar.open('We have received your request. Will get back to you soon. Check request here: ' + this.accessMockBinUrl, 'close', {duration: 5000});
+        this.snackBar.open('We have received your request. Will get back to you soon. Check request here: ' + this.accessMockBinUrl, 'close', {duration: 7000});
       }, 1000);
     });
-    /*setTimeout(() => {
+    // Comment below setTimeOut if mock bin is enabled
+    setTimeout(() => {
       this.isProcessing = false;
 
       this.contactForm.reset();
@@ -60,7 +61,7 @@ export class ContactComponent implements OnInit {
       Object.keys(this.contactForm.controls).forEach(key => {
         this.contactForm.controls[key].setErrors(null);
       });
-      this.snackBar.open('!!! Cross-Origin Request Blocked from POST BIN. Processed with error. Please read TODOs in code. Search for  TODOs in code and read it first.', 'close', {duration: 10000});
-    }, 1000);*/
+      this.snackBar.open('!!! Cross-Origin Request Blocked from POST BIN. Processed with error. Please read TODOs in code. Check request here: ' + this.accessPostBinUrl, 'close', {duration: 70000});
+    }, 1000);
   }
 }
