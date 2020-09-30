@@ -21,6 +21,7 @@ class PostBin
   httpClient: HttpClient;
   curPostBinUrl = environment.postbin_api_url + '/' + environment.postbin_key;
   curMockBinUrl = environment.mockbinbin_api_url + '/' + environment.mockbinbin_key;
+
   constructor(httpClient: HttpClient){
     this.httpClient = httpClient;
   }
@@ -31,11 +32,11 @@ class PostBin
      * PostBin has issue with CORS header which can be managed by mock bin
      * Please uncomment below code and comment get request code to test if so.
      */
-    /*this.curPostBinUrl = this.curMockBinUrl;
+    // this.curPostBinUrl = this.curMockBinUrl;
     const formatData = new FormData();
     formatData.append('name', ud.name);
     formatData.append('message',  ud.message);
-    return this.httpClient.post(this.curPostBinUrl, formatData, {responseType: 'text'});*/
+    return this.httpClient.post(this.curMockBinUrl, formatData, {responseType: 'text'});
 
     /*
     * TODO
@@ -45,8 +46,8 @@ class PostBin
     * (Reason: CORS header ‘Access-Control-Allow-Origin’ missing).
     * USING POST BIN CODE TESTING IS NOT POSSIBLE (NO RESPONSE) SO CHANGE TO MOCK BIN AS EXPLAINED ABOVE
     * */
-    const httpParams = new HttpParams().set('name', ud.name).set('message', ud.message);
+    /*const httpParams = new HttpParams().set('name', ud.name).set('message', ud.message);
     const cpbUrl = this.curPostBinUrl + '?' + httpParams.toString();
-    return this.httpClient.get(cpbUrl, {responseType: 'text'});
+    return this.httpClient.get(cpbUrl, {responseType: 'text'});*/
   }
 }

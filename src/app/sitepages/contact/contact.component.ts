@@ -11,7 +11,9 @@ import {retry} from 'rxjs/operators';
 })
 export class ContactComponent implements OnInit {
 
-  curPostBinUrl = environment.postbin_api_url + '/' + environment.postbin_key;
+  accessPostBinUrl = environment.postbin_api_url + '/b/' + environment.postbin_key;
+  accessMockBinUrl = environment.mockbinbin_api_url + '/' + environment.mockbinbin_key + '/log';
+
   isProcessing = false;
   contactForm: FormGroup;
   constructor(
@@ -47,10 +49,10 @@ export class ContactComponent implements OnInit {
           this.contactForm.controls[key].setErrors(null);
         });
 
-        this.snackBar.open('We have received your request. Will get back to you soon.', 'close', {duration: 5000});
+        this.snackBar.open('We have received your request. Will get back to you soon. Check request here: ' + this.accessMockBinUrl, 'close', {duration: 5000});
       }, 1000);
     });
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.isProcessing = false;
 
       this.contactForm.reset();
@@ -58,8 +60,7 @@ export class ContactComponent implements OnInit {
       Object.keys(this.contactForm.controls).forEach(key => {
         this.contactForm.controls[key].setErrors(null);
       });
-
       this.snackBar.open('!!! Cross-Origin Request Blocked from POST BIN. Processed with error. Please read TODOs in code. Search for  TODOs in code and read it first.', 'close', {duration: 10000});
-    }, 1000);
+    }, 1000);*/
   }
 }
