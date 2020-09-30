@@ -38,10 +38,6 @@ export class AuthService {
   login(): Observable<boolean> {
     this.signInWithGoogle();
 
-    const dateNow = new Date();
-    dateNow.setDate(dateNow.getDate() + 15);
-    this.cookieService.set('isLoggedIn', 'true', dateNow);
-
     return of(true).pipe(
       delay(1000),
       tap(val => this.isLoggedIn = true)
@@ -170,6 +166,10 @@ export class AuthService {
     this.data.changeUserFirstName(this.user.firstName);
     this.data.changeUserLastName(this.user.lastName);
     this.data.changeUserProvider(this.user.provider);
+
+    const dateNow = new Date();
+    dateNow.setDate(dateNow.getDate() + 15);
+    this.cookieService.set('isLoggedIn', 'true', dateNow);
   }
   signInWithGoogle(): void{
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
