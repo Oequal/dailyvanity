@@ -1,0 +1,31 @@
+<!--
+TODO
+Design of this page is not as per described in PDF file.
+Google login don't need any email or password to authenticate so, changed layout as required.
+Given login layout design shows 2 text box for email and password kind of info but google login required authentication on their end by approval.
+-->
+<mat-grid-list cols="1" rowHeight="30rem" class="login-component">
+  <mat-grid-tile>
+      <mat-card *ngIf="!userLoggedIn">
+        <mat-card-title>Sign in with your Google account</mat-card-title>
+        <mat-card-content>
+          <img  class="tile-image" alt="Google Logo" src="./assets/images/google-logo.png">
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="signIn()">
+            Click to logged in
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card *ngIf="userLoggedIn">
+        <mat-card-title>{{ userName }}</mat-card-title>
+        <mat-card-subtitle>{{ userEmail }}</mat-card-subtitle>
+        <mat-card-content>
+          <img  class="tile-image" alt="User avatar" src="{{ userImage }}">
+        </mat-card-content>
+        <button mat-raised-button color="warn" (click)="signOut()">
+          Sign out
+        </button>
+      </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

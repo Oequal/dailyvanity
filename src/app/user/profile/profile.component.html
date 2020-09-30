@@ -1,0 +1,41 @@
+<div class="container profile-component"
+     fxLayout
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="20px"
+     fxLayoutGap.xs="0">
+  <div fxLayoutAlign="end">
+    <div  class="pc-photo">
+      <mat-card>
+        <mat-card-content>
+          <img src="{{userImage}}"/>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div fxFlex="40%" >
+    <div class="pc-info">
+      <mat-card>
+        <mat-card-title>Profile</mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              First Name: {{userFirstName}}
+            </mat-list-item>
+            <mat-list-item>
+              Last Name: {{userLastName}}
+            </mat-list-item>
+            <mat-list-item>
+              Email: {{userEmail}}
+            </mat-list-item>
+            <mat-list-item>
+              <small>Data showing from your {{userProvider}} profile.</small>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

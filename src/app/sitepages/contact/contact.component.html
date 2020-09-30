@@ -1,0 +1,36 @@
+<mat-grid-list cols="1" rowHeight="50rem" class="contact-component">
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-title>Contact us</mat-card-title>
+      <mat-card-subtitle>Please fill the form and send your request</mat-card-subtitle>
+      <mat-card-content>
+        <div class="container">
+          <div class="form-container">
+            <form [formGroup]="contactForm" (submit)="submit()">
+              <mat-form-field class="form-field" appearance="legacy">
+                <mat-label>Your name</mat-label>
+                <input matInput formControlName="name" required>
+                <mat-error *ngIf="contactForm.controls.name.touched && contactForm.controls.name.invalid">
+                  <span *ngIf="contactForm.controls.name.errors.required">Name is mandatory.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="form-field" appearance="legacy">
+                <mat-label>Message</mat-label>
+                <textarea rows="10" matInput formControlName="message" required placeholder="Leave a comment here"></textarea>
+                <mat-error *ngIf="contactForm.controls.message.touched && contactForm.controls.message.invalid">
+                  <span *ngIf="contactForm.controls.message.errors.required">Message is mandatory.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-card-actions>
+              <button type="submit" mat-raised-button color="accent" [disabled]="!contactForm.valid || isProcessing" type="submit">Send <mat-icon>send</mat-icon></button>
+              </mat-card-actions>
+            </form>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate" *ngIf="isProcessing"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

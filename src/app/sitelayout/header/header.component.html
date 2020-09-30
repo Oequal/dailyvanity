@@ -1,0 +1,27 @@
+<header>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span class="brand-logo">
+        <a  mat-button  [routerLink]="['']">
+          <img  src="./assets/images/app-logo.png">
+        </a>
+      </span>
+      <nav>
+        <a *ngFor="let item of arrSiteMenu;let i = index"  mat-button  [routerLink]="item.url" routerLinkActive="active">{{item.title}}</a>
+        <div class="user-info" *ngIf="userLoggedIn">
+          <a  mat-button  [routerLink]="['profile']" [matTooltip]="userEmail">
+            <img alt="" src="{{userImage}}">
+            <small>{{userName}}</small>
+          </a>
+        </div>
+        <!--<div class="user-info" *ngIf="user">
+          <a  mat-button  routerLink="profile" [matTooltip]="user.email">
+            <img src="{{user.photoUrl}}">
+            <small>{{user.name}}</small>
+          </a>
+        </div>-->
+        <!--routerLinkActive="active"-->
+      </nav>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
